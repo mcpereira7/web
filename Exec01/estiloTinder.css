@@ -3,18 +3,16 @@
     padding: 0;
 }
 body{
-    background-image: url(cidade.png)
+    background-image:none;
 }
 .card{
     margin-top: 1em;
-    border-radius: 15% 5% 5% 5%;   
 }
 /*.card-text{
     white-space: pre;
 }*/
-.card-img-top{
-    border-radius: 50% 50%;
-    width: 30%;
+.btns{
+    font-size: 4ex;
 }
 /* Deixa todos os cards com mesmo tamanho independente do conteúdo*/
 .row > div[class*='col-'] { /* Preciso entender melhor esse tipo de seleção como também a config FLEX*/

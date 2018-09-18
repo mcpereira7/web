@@ -4,54 +4,59 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="estilo.css">
+        <link rel="stylesheet" href="estiloTinder.css">
         <script>
             var currentPage = 1;
             function loadInfo() {
                 $.getJSON("https://randomuser.me/api/", {
                    seed: "tads",
                    page: currentPage,
-                   results: 12,
+                   results: 1,
                    nat: "br",
                    inc: "name,cell,email,picture"
                 }, function (dataJSON) {
                     for (let i = 0; i < dataJSON.results.length; i++) {
-                        var obj = dataJSON.results[i];
-                        console.log(obj);
-                        let itemDom =  "<div class=\"col-sm-6 col-md-4 col-lg-3\">" +
-                                        "<div class=\"card\" >"+
-                                        "<img class=\"card-img-top\" src=\""+ obj.picture.large + "\"alt=\"Card image cap\">"+
-                                        "<div class=\"card-body\">"+
-                                        "<h5 class=\"card-title\">" + obj.name.first + " "  + obj.name.last + "</h5>"+
-                                        "<p class=\"card-text\">"+ "Tel.: " + obj.cell + "</p>"+
-                                        "<p class=\"card-text\"><a href=\"mailto:" + obj.email + "\">" + obj.email + "</a></p>"+
-                                        "</div>"+
-                                        "</div>";
-                        $("#pessoas").append(itemDom);
+                        let obj = dataJSON.results[i];
+                        let titulo = obj.name.first;
+                        let foto = obj.picture.large;
+                        
+                        $(".card-img-top").attr("src", foto);
+                        $(".card-title").text(titulo);
                     }
                 });
             }
             $(function() {
-                $("#btnLoadMore").on("click", function(ev){
+                $(".btns").on("click", function(ev){
                     loadInfo();
                     currentPage++;
                 })
             });
+            loadInfo();
         </script>
     </head>
     <body>
         
         <div class="container">
         
-            <h1>Agenda de contatos</h1>
+            <h1>Tinder</h1>
             <div class="row" id="pessoas">
+                    <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <i class="fas fa-times btns text-center"></i>
+                              <i class="fas fa-heart btns text-center"></i>
+                            </div>
+                          </div>
                 
             </div>
-            <button id="btnLoadMore" class="btn btn-lg btn-block btn-default">Carregar pessoas</button>
+            
         </div>
     </body>
 </html>
