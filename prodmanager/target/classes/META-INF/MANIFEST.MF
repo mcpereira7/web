@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: root
+Build-Jdk: 10.0.2
+Implementation-Title: prodmanager
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: br.com.senac.desweb
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/prodmanager
+Created-By: Maven Integration for Eclipse
+
